@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        ComicCraft - AI Comic Story Creator
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="/static/css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     Header
+====================================================== -->
+
+<header class="header">
+
+    <div class="header-inner">
+
+        <div>
+
+            <div class="brand">
+                ComicCraft
+            </div>
+
+            <div class="tagline">
+                AI Comic Story Creator
+            </div>
+
+        </div>
+
+
+        <a
+            href="/docs"
+            target="_blank"
+            class="docs-button"
+        >
+            API Docs
+        </a>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     Main
+====================================================== -->
+
+<main class="container">
+
+
+    <!-- =================================================
+         Story Input
+    ================================================== -->
+
+    <section class="card">
+
+        <div class="section-title">
+
+            <span class="step-number">
+                1
+            </span>
+
+            <div>
+
+                <h1>
+                    Create your comic
+                </h1>
+
+                <p>
+                    Enter a story idea and let Gemini
+                    turn it into a five-panel comic.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <form id="comicForm" onsubmit="return false;">
+
+
+            <label for="story">
+                Story idea
+            </label>
+
+            <textarea
+                id="story"
+                name="story"
+                required
+                maxlength="5000"
+                placeholder="Example: A shy robot discovers a tiny magical garden on the roof of an old city library and tries to protect it from a storm."
+            ></textarea>
+
+
+            <div class="form-grid">
+
+
+                <div>
+
+                    <label for="style">
+                        Visual style
+                    </label>
+
+                    <select id="style">
+
+                        <option>
+                            cinematic comic book
+                        </option>
+
+                        <option>
+                            colorful Saturday-morning comic
+                        </option>
+
+                        <option>
+                            retro science-fiction comic
+                        </option>
+
+                        <option>
+                            watercolor graphic novel
+                        </option>
+
+                        <option>
+                            manga-inspired black and white
+                        </option>
+
+                        <option>
+                            fantasy adventure comic
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div>
+
+                    <label for="audience">
+                        Audience
+                    </label>
+
+                    <select id="audience">
+
+                        <option>
+                            general
+                        </option>
+
+                        <option>
+                            children
+                        </option>
+
+                        <option>
+                            young adult
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div>
+
+                    <label for="language">
+                        Language
+                    </label>
+
+                    <select id="language">
+
+                        <option>
+                            English
+                        </option>
+
+                        <option>
+                            Tamil
+                        </option>
+
+                        <option>
+                            Hindi
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+            </div>
+
+
+            <button
+                type="submit"
+                id="outlineButton"
+                class="primary-button"
+            >
+                Generate 5-Panel Outline
+            </button>
+
+
+        </form>
+
+    </section>
+
+
+
+    <!-- =================================================
+         Outline
+    ================================================== -->
+
+    <section
+        id="outlineSection"
+        class="card hidden"
+    >
+
+        <div class="section-heading">
+
+            <div>
+
+                <div class="eyebrow">
+                    STORY OUTLINE
+                </div>
+
+                <h2 id="outlineTitle">
+                    Comic outline
+                </h2>
+
+                <p id="outlineLogline">
+                </p>
+
+            </div>
+
+
+            <button
+                id="generateButton"
+                class="primary-button"
+            >
+                Generate Comic
+            </button>
+
+        </div>
+
+
+        <div
+            id="characters"
+            class="characters"
+        >
+        </div>
+
+
+        <div
+            id="outlinePanels"
+            class="outline-grid"
+        >
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         Generated Comic
+    ================================================== -->
+
+    <section
+        id="resultSection"
+        class="card hidden"
+    >
+
+        <div class="section-heading">
+
+            <div>
+
+                <div class="eyebrow">
+                    GENERATED COMIC
+                </div>
+
+                <h2>
+                    Your Comic
+                </h2>
+
+                <p id="resultLogline">
+                </p>
+
+            </div>
+
+
+           <button
+    id="pdfButton"
+    class="secondary-button"
+    type="button"
+>
+    Export Comic as PDF
+</button>
+
+        </div>
+
+
+        <div
+            id="comicGrid"
+            class="comic-grid"
+        >
+        </div>
+
+
+        <div
+            id="downloadBox"
+            class="download-box"
+        >
+        </div>
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     Status
+====================================================== -->
+
+<div
+    id="status"
+    class="status"
+>
+</div>
+
+
+
+<script src="/static/js/app.js"></script>
+
+</body>
+
+</html>
